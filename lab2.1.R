@@ -1,6 +1,5 @@
 library(readxl)
-library(ggplot2)
-setwd("C:/Users/soch1van/Desktop/дз/R labs")
+setwd("C:/Users/soch1van/Desktop/r_studio")
 data <- read_excel("data.xlsx")
 
 data_new <- data[-1]
@@ -15,23 +14,24 @@ task1 <- data.frame(
   Mean = mean_values
 )
 
-selected_data1 <- data[data$Уни > 5, ]
-selected_data2 <- data[data$KFC == 10, ]
 
 high_pref <- colSums(data_new > 7, na.rm = TRUE)
 low_pref <- colSums(data_new < 3, na.rm = TRUE)
 task2 <- data.frame(High = high_pref, Low = low_pref)
 
+
 task3 <- sort(colMeans(data_new, na.rm = TRUE), decreasing = TRUE)
 print(task3)
 
 data_no_na <- na.omit(data_new)
-print(data_no_na)
 
 data_replace_na <- data_new
 for (col in names(data_replace_na)) {
   data_replace_na[[col]][is.na(data_replace_na[[col]])] <- mean(data_replace_na[[col]], na.rm = TRUE)
 }
+
+selected_data1 <- data[data$Сицилия > 6, ]
+selected_data2 <- data[data$KFC == 10, ]
 #--------------------------------------------------------------
 
 barplot(task3, 
