@@ -1,4 +1,3 @@
-library(stringi)
 library(rvest)
 
 countries <- c("Netherlands", "Switzerland", "Croatia", "United Arab Emirates", 
@@ -22,7 +21,6 @@ data_by_year <- function(year){
   table_node <- html_nodes(page_by_year, "table#t2")
   table <- as.data.frame(html_table(table_node))
   table <- table[-1]
-  
   return(table)
 }
 
@@ -57,8 +55,8 @@ plot_every_indicator <- function(select_data, countries, years, colors) {
     
     par(mar = c(5, 4, 4, 10), xpd = TRUE)
     
-    plot(years, result[[1]], xlab = 'Год', ylab = indicator,
-         ylim = c(mn - 13, mx + 13), main = main,
+    plot(years, result[[1]], xlab = 'год', ylab = "значение",
+         ylim = c(mn - 13, mx + 13), main = main, cex.main = 1,
          col = colors[1], type = 'o', lty = 1, pch = 19)
     
     lines(years, result$'Switzerland', type='o', col=colors[2], lty=1, pch = 19)
