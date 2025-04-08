@@ -1,6 +1,6 @@
 library(readxl)
 
-setwd("C:/Users/soch1van/Desktop/r_studio")
+setwd("C:/Users/soch1van/Desktop/r_studio/лаб.3")
 data <- read_excel("romania_rowing.xlsx")
 
 data_new <- data[!grepl("мужчины|женщины", data$"Олимпийские Игры"), ]
