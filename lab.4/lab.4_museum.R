@@ -4,7 +4,7 @@ library(stringr)
 url <- "https://www.sputnik8.com/ru/moscow"
 page <- read_html(url)
 
-tours <- page %>% html_nodes(".activity-card_n0wr")
+tours <- page %>% html_nodes(".activity-card_new_xjRx")
 
 titles <- tours %>% html_node(".title_xIA3") %>% html_text(trim = TRUE)
 
@@ -20,6 +20,7 @@ durations <- sapply(tours, function(tour) {
   tail(duration, 1)
 })
 
+
 links <- tours %>%html_node("a") %>%html_attr("href") %>%
   paste0("https://www.sputnik8.com", .)
 
@@ -30,4 +31,4 @@ df <- data.frame(
   Цена = prices,
   Ссылка = links,
   stringsAsFactors = FALSE
-  )
+)
